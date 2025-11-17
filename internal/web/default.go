@@ -2,6 +2,7 @@ package web
 
 import (
 	"github.com/Dylanps05/Capacity-Scanner/internal/logic"
+	"github.com/Dylanps05/Capacity-Scanner/internal/web/api/sensor"
 	"net/http"
 )
 
@@ -11,6 +12,8 @@ type DefaultHandler struct {
 
 func (h *DefaultHandler) buildMux(c logic.Controller) {
 	mux := http.NewServeMux()
+
+	sensor.NewDemoSensorAPIHandler(mux, c)
 
 	static_fs := http.FileServer(http.Dir("./web/static"))
 	mux.Handle("/static/", http.StripPrefix("/static/", static_fs))
