@@ -2,7 +2,6 @@ package capacity
 
 import (
 	"context"
-	"github.com/Dylanps05/Capacity-Scanner/internal/cstype"
 )
 
 type CapacityStorage interface {

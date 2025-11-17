@@ -1,8 +1,8 @@
 package storage
 
 import (
-	"git.11spades.net/CivilMatch/civilmatch/internal/storage/capacity"
-	"git.11spades.net/CivilMatch/civilmatch/internal/storage/sensor"
+	"github.com/Dylanps05/Capacity-Scanner/internal/storage/capacity"
+	"github.com/Dylanps05/Capacity-Scanner/internal/storage/sensor"
 	"github.com/jackc/pgx/v5"
 )
 
