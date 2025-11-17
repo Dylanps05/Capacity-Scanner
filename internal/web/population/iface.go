@@ -1,9 +1,12 @@
 package population
 
-import "net/http"
+import (
+	"context"
+	"net/http"
+)
 
 type PopulationHandlerLogic interface {
-	CurrentPopulation() (int, error)
+	CurrentPopulation(ctx context.Context) (int, error)
 }
 
 type PopulationHandler interface {

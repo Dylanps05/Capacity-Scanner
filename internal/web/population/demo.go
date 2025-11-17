@@ -27,7 +27,8 @@ func (h *DemoPopulationHandler) HandleLandingPageRequest(w http.ResponseWriter, 
 	}
 	defer rsp.Write(w)
 
-	pop, err := h.PopulationHandlerLogic.CurrentPopulation()
+	ctx := r.Context()
+	pop, err := h.PopulationHandlerLogic.CurrentPopulation(ctx)
 	if err != nil {
 		w.Write([]byte(err.Error()))
 		rsp.StatusCode = http.StatusInternalServerError
