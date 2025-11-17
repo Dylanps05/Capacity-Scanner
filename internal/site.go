@@ -27,7 +27,7 @@ func (s *Site) initSQL(db_addr string) {
 func (s *Site) Init(web_addr string, db_addr string) {
 	s.initSQL(db_addr)
 	s.SiteStorage = storage.NewDefaultSiteStorage(s.db)
-	//s.Controller = logic.DefaultController{}.New(s.SiteStorage)
-	//s.Handler = web.DefaultHandler{}.New(s.Controller)
+	s.Controller = logic.NewDefaultController(s.SiteStorage)
+	s.Handler = web.NewDefaultHandler(s.Controller)
 	s.Handler.Start(web_addr)
 }
