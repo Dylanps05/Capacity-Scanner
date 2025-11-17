@@ -1,11 +1,12 @@
 package sensor
 
 import (
+	"context"
 	"net/http"
 )
 
 type SensorModule interface {
-	AuthenticateSensor(r *http.Request) (bool, error)
+	AuthenticateSensor(r *http.Request) error
 	ParseRequest(r *http.Request) (int, error)
-	RecordPopulation(p int) error
+	RecordPopulation(ctx context.Context, p int) error
 }
