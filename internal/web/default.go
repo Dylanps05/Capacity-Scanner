@@ -18,12 +18,6 @@ func (h *DefaultHandler) buildMux(c logic.Controller) {
 	h.mux = mux
 }
 
-func (h *DefaultHandler) wrapMux() {
-	m := h.mux
-
-	h.mux = m
-}
-
 func NewDefaultHandler(c logic.Controller) Handler {
 	h := &DefaultHandler{}
 	h.buildMux(c)
