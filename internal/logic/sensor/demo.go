@@ -2,16 +2,13 @@ package sensor
 
 import (
 	"context"
-	"net/http"
-	"reflect"
-	"strconv"
-
 	"fmt"
-	"reflect"
-
 	"github.com/Dylanps05/Capacity-Scanner/internal/cstype"
 	"github.com/Dylanps05/Capacity-Scanner/internal/storage/capacity"
 	"github.com/Dylanps05/Capacity-Scanner/internal/storage/sensor"
+	"net/http"
+	"reflect"
+	"strconv"
 )
 
 type DefaultSensorModule struct {
