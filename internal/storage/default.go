@@ -11,11 +11,12 @@ type DefaultSiteStorage struct {
 	sensor.SensorAuthStorage
 }
 
-func (s DefaultSiteStorage) New(db *pgx.Conn) SiteStorage {
-	s.CapacityStorage = capacity.NewNvCapacityStorage(db)
-	//s.SensorAuthStorage = sensor.NewNvSensorAuthStorage(db)
-
-	return &s
+func NewDefaultSiteStorage(db *pgx.Conn) SiteStorage {
+	s := &DefaultSiteStorage{
+		CapacityStorage:   capacity.NewNvCapacityStorage(db),
+		SensorAuthStorage: sensor.NewNvSensorAuthStorage(db),
+	}
+	return s
 }
 
 func (s *DefaultSiteStorage) GetCapacityStorage() capacity.CapacityStorage {
