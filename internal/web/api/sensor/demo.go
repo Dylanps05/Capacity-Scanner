@@ -1,7 +1,6 @@
 package sensor
 
 import (
-	"github.com/Dylanps05/Capacity-Scanner/internal/cstype"
 	"net/http"
 )
 
@@ -20,16 +19,22 @@ func NewDemoSensorAPIHandler(m *http.ServeMux, l SensorAPILogic) SensorAPIHandle
 }
 
 func (h *DemoSensorAPIHandler) HandlePopulationUpdate(w http.ResponseWriter, r *http.Request) {
-	token := cstype.ScannerToken(r.Header.Get("Authentication"))
+	rsp := http.Response{
+		StatusCode: http.StatusOK,
+	}
+	defer rsp.Write(w)
+
 	err := h.SensorAPILogic.AuthenticateSensor(r)
 	if err != nil {
 		w.Write([]byte(err.Error()))
+		rsp.StatusCode = http.StatusForbidden
 		return
 	}
 
 	pop, err := h.SensorAPILogic.ParseRequest(r)
 	if err != nil {
 		w.Write([]byte(err.Error()))
+		rsp.StatusCode = http.StatusInternalServerError
 		return
 	}
 
