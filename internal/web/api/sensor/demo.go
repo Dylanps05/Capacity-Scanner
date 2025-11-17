@@ -33,5 +33,5 @@ func (h *DemoSensorAPIHandler) HandlePopulationUpdate(w http.ResponseWriter, r *
 		return
 	}
 
-	h.SensorAPILogic.RecordPopulation(pop)
+	h.SensorAPILogic.RecordPopulation(r.Context(), pop)
 }
