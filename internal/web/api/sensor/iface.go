@@ -4,7 +4,7 @@ import "net/http"
 import "context"
 
 type SensorAPILogic interface {
-	AuthenticateSensor(r *http.Request) (bool, error)
+	AuthenticateSensor(r *http.Request) error
 	ParseRequest(r *http.Request) (int, error)
 	RecordPopulation(ctx context.Context, p int) error
 }
