@@ -2,9 +2,11 @@ package sensor
 
 import (
 	"context"
-	"git.11spades.net/CivilMatch/civilmatch/internal/cstype"
+	"github.com/Dylanps05/Capacity-Scanner/internal/cstype"
 )
 
 type SensorAuthStorage interface {
-	StoreToken(ctx context.Context) error
+	StoreToken(ctx context.Context, t cstype.ScannerToken) error
+	HaveToken(ctx context.Context, t cstype.ScannerToken) (bool, error)
+	RevokeToken(ctx context.Context, t cstype.ScannerToken) error
 }
