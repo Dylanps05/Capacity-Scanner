@@ -2,11 +2,8 @@ package capacity
 
 import (
 	"context"
-	"errors"
 	"fmt"
-	"sync"
 
-	"git.11spades.net/CivilMatch/civilmatch/internal/cstype"
 	"github.com/jackc/pgx/v5"
 	"reflect"
 )

@@ -2,7 +2,7 @@ package capacity
 
 import (
 	"context"
-	"git.11spades.net/CivilMatch/civilmatch/internal/cstype"
+	"github.com/Dylanps05/Capacity-Scanner/internal/cstype"
 )
 
 type CapacityStorage interface {

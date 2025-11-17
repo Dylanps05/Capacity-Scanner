@@ -1,8 +1,8 @@
 package storage
 
 import (
-	"git.11spades.net/CivilMatch/civilmatch/internal/storage/login"
-	"git.11spades.net/CivilMatch/civilmatch/internal/storage/race"
+	"github.com/Dylanps05/Capacity-Scanner/internal/storage/capacity"
+	"github.com/Dylanps05/Capacity-Scanner/internal/storage/sensor"
 	"github.com/jackc/pgx/v5"
 )
 
@@ -12,8 +12,8 @@ type DefaultSiteStorage struct {
 }
 
 func (s DefaultSiteStorage) New(db *pgx.Conn) SiteStorage {
-	capacity.CapacityStorage = capacity.NewNonvolatileCapacityStorage(db)
-	sensor.SensorAuthStorage = sensor.NewNonvolatileSensorAuthStorage(db)
+	s.CapacityStorage = capacity.NewNvCapacityStorage(db)
+	//s.SensorAuthStorage = sensor.NewNvSensorAuthStorage(db)
 
 	return &s
 }
