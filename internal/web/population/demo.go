@@ -3,6 +3,8 @@ package population
 import (
 	"html/template"
 	"net/http"
+
+	"github.com/Dylanps05/Capacity-Scanner/internal/cstype/ctxkey"
 )
 
 type DemoPopulationHandler struct {
@@ -36,8 +38,10 @@ func (h *DemoPopulationHandler) HandleLandingPageRequest(w http.ResponseWriter, 
 	}
 
 	page_data := struct {
+		UID        any
 		Population int
 	}{
+		UID:        ctx.Value(ctxkey.UID),
 		Population: pop,
 	}
 	h.landingPage.Execute(w, page_data)

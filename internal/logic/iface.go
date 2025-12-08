@@ -1,6 +1,7 @@
 package logic
 
 import (
+	"github.com/Dylanps05/Capacity-Scanner/internal/logic/auth"
 	"github.com/Dylanps05/Capacity-Scanner/internal/logic/capacity"
 	"github.com/Dylanps05/Capacity-Scanner/internal/logic/sensor"
 )
@@ -8,4 +9,5 @@ import (
 type Controller interface {
 	sensor.SensorModule
 	capacity.CapacityModule
+	auth.AuthModule
 }

@@ -1,7 +1,7 @@
 package web
 
-import ()
+import "net/http"
 
 type Handler interface {
-	Start(addr string)
+	GetMux() http.Handler
 }

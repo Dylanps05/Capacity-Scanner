@@ -5,7 +5,10 @@ import (
 
 	"github.com/Dylanps05/Capacity-Scanner/internal/logic"
 	"github.com/Dylanps05/Capacity-Scanner/internal/web/api/sensor"
+	"github.com/Dylanps05/Capacity-Scanner/internal/web/login"
+	"github.com/Dylanps05/Capacity-Scanner/internal/web/logout"
 	"github.com/Dylanps05/Capacity-Scanner/internal/web/population"
+	"github.com/Dylanps05/Capacity-Scanner/internal/web/register"
 )
 
 type DefaultHandler struct {
@@ -17,6 +20,9 @@ func (h *DefaultHandler) buildMux(c logic.Controller) {
 
 	sensor.NewDemoSensorAPIHandler(mux, c)
 	population.NewDemoPopulationHandler(mux, c)
+	login.NewDemoLoginPage(mux, c)
+	logout.NewDemoLogoutPage(mux, c)
+	register.NewDemoRegisterPage(mux, c)
 
 	static_fs := http.FileServer(http.Dir("./web/static"))
 	mux.Handle("/static/", http.StripPrefix("/static/", static_fs))
@@ -31,6 +37,6 @@ func NewDefaultHandler(c logic.Controller) Handler {
 	return h
 }
 
-func (h *DefaultHandler) Start(addr string) {
-	http.ListenAndServe(addr, h.mux)
+func (h *DefaultHandler) GetMux() http.Handler {
+	return h.mux
 }

@@ -2,11 +2,14 @@ package internal
 
 import (
 	"context"
+	"log"
+	"net/http"
+
 	"github.com/Dylanps05/Capacity-Scanner/internal/logic"
+	"github.com/Dylanps05/Capacity-Scanner/internal/mmw"
 	"github.com/Dylanps05/Capacity-Scanner/internal/storage"
 	"github.com/Dylanps05/Capacity-Scanner/internal/web"
 	"github.com/jackc/pgx/v5"
-	"log"
 )
 
 type Site struct {
@@ -14,6 +17,7 @@ type Site struct {
 	storage.SiteStorage
 	logic.Controller
 	web.Handler
+	mmw.MuxMiddleware
 }
 
 func (s *Site) initSQL(db_addr string) {
@@ -24,10 +28,11 @@ func (s *Site) initSQL(db_addr string) {
 	s.db = conn
 }
 
-func (s *Site) Init(web_addr string, db_addr string) {
+func (s *Site) Init(addr string, db_addr string) {
 	s.initSQL(db_addr)
 	s.SiteStorage = storage.NewDefaultSiteStorage(s.db)
 	s.Controller = logic.NewDefaultController(s.SiteStorage)
 	s.Handler = web.NewDefaultHandler(s.Controller)
-	s.Handler.Start(web_addr)
+	s.MuxMiddleware = mmw.NewDefaultMuxMiddleware(s.Handler.GetMux(), s.Controller)
+	http.ListenAndServe(addr, s.MuxMiddleware.GetMux())
 }
