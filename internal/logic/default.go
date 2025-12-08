@@ -17,5 +17,6 @@ func NewDefaultController(s storage.SiteStorage) Controller {
 	return &DefaultController{
 		SensorModule:   sensor.NewDefaultSensorModule(s.GetSensorAuthStorage(), s.GetCapacityStorage()),
 		CapacityModule: capacity.NewDefaultCapacityModule(s.GetCapacityStorage()),
+		AuthModule:     auth.NewDefaultAuthModule(s),
 	}
 }

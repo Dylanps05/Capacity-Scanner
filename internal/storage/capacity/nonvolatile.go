@@ -4,8 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/jackc/pgx/v5"
 	"reflect"
+
+	"github.com/jackc/pgx/v5"
 )
 
 type NvCapacityStorage struct {
@@ -35,9 +36,9 @@ func (s *NvCapacityStorage) StoreCapacity(ctx context.Context, c int) error {
 }
 
 func (s *NvCapacityStorage) GetCapacity(ctx context.Context) (int, error) {
-	stmt := `select *
+	stmt := `select pop
         from capacity
-        order by time
+        order by time desc
         limit 1`
 	row := s.db.QueryRow(ctx, stmt)
 	pop := 0

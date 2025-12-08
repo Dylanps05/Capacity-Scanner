@@ -68,7 +68,8 @@ type CachedLogins struct {
 
 func NewCachedLoginStorage(db *pgx.Conn) LoginStorage {
 	return &CachedLogins{
-		db: db,
+		db:    db,
+		cache: LoginCache{}.New(),
 	}
 }
 

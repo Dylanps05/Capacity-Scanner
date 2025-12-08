@@ -1,11 +1,11 @@
-package storage
+package session
 
 import (
 	"context"
 	"errors"
 	"sync"
 
-	"git.11spades.net/CivilMatch/civilmatch/internal/cstype"
+	"github.com/Dylanps05/Capacity-Scanner/internal/cstype"
 )
 
 type SyncedSessionStorage struct {
