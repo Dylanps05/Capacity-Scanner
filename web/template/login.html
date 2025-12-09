@@ -1,16 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>Login</title>
-  <style>body {background: white;}</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Hillman Capacity Scanner</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
 </head>
-<body>
-  <h1>Login</h1>
-  <form action="/login/submit" method="post">
-    <label for="username">Username: </label>
-    <input type="text" id="username" name="username" />
-    <br />
-    <label for="password">Password: </label>
-    <input type="password" id="password" name="password" />
-    <input type="submit" />
-  </form>{{if .LoginFailed}}
-  <p>Login failed.</p>{{end}}
+<body class="auth login">
+  <header>
+    <div class="navbar">
+      <a class="brand" href="/">
+        <span class="badge">HC</span>
+        <span>Hillman Capacity Scanner</span>
+      </a>
+      <nav>
+        <a href="/">Home</a>
+        <a class="active" href="/login">Login</a>
+        <a href="/register">Register</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="layout">
+      <section class="card form-card">
+        <div class="pill">Welcome back</div>
+        <h1>Sign in to check capacity</h1>
+        <p class="muted">Access live counts and plan your study time before the crowds roll in.</p>
+        {{if .LoginFailed}}
+        <div class="alert">Login failed. Double-check your username and password.</div>
+        {{end}}
+        <form action="/login/submit" method="post">
+          <div class="stack">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" autocomplete="username" placeholder="your.username" />
+          </div>
+          <div class="stack">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" autocomplete="current-password" placeholder="••••••••" />
+          </div>
+          <div class="form-actions">
+            <button class="button primary" type="submit">Login</button>
+            <a class="helper" href="/register">Need an account? Register</a>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer>Built to keep study spaces calm and comfortable.</footer>
 </body>
+</html>

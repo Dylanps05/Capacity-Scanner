@@ -1,9 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hillman Capacity Scanner</title>
-  <style>body {background: white;}</style>
+  <link rel="stylesheet" href="/static/css/style.css" />
 </head>
-<body>
-  <h1>Hillman Capacity Scanner</h1>
-  <hr />
-  <p>There are currently {{.Population}} people in Hillman.</p>
+<body class="landing">
+  <header>
+    <div class="navbar">
+      <a class="brand" href="/">
+        <span class="badge">HC</span>
+        <span>Hillman Capacity Scanner</span>
+      </a>
+      <nav>
+        <a class="active" href="/">Home</a>
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="layout">
+      <section class="card hero">
+        <div class="pill">Occupancy made simple</div>
+        <h1>Find the best time to study at Hillman</h1>
+        <p>Our occupancy tracker helps students spot peak times, avoid crowded spaces, and settle into a calm place to work.</p>
+        <div class="actions">
+          <a class="button primary" href="/login">Log in</a>
+          <a class="button ghost" href="/register">Create account</a>
+        </div>
+      </section>
+
+      <section class="card stats">
+        <div class="stat">
+          <div class="label">Current population</div>
+          <div class="value">{{.Population}}</div>
+          <p class="muted">Live count of people inside Hillman. Check back before you head over for a focused study session.</p>
+        </div>
+      </section>
+
+      <section class="card stack">
+        <div class="label">Why this matters</div>
+        <p class="muted">We built this tool so students can quickly tell when Hillman is too crowded for productive work. Check the live count, plan your visit, and enjoy a better study experience.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer>Built to keep study spaces calm and comfortable.</footer>
 </body>
+</html>

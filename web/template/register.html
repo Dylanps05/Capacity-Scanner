@@ -1,13 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>Register</title>
-  <style>body {background: white;}</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register - Hillman Capacity Scanner</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
 </head>
-<body>
-  <h1>Register</h1>
-  <form action="/register/submit" method="post">
-    <label for="username">Username: </label>
-    <input type="text" id="username" name="username" />
-    <label for="password">Password: </label>
-    <input type="password" id="password" name="password" />
-    <input type="submit" />
+<body class="auth register">
+  <header>
+    <div class="navbar">
+      <a class="brand" href="/">
+        <span class="badge">HC</span>
+        <span>Hillman Capacity Scanner</span>
+      </a>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/login">Login</a>
+        <a class="active" href="/register">Register</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="layout">
+      <section class="card form-card">
+        <div class="pill">Create your login</div>
+        <h1>Join the capacity tracker</h1>
+        <p class="muted">Set up your account so you can check Hillman crowd levels before you head over.</p>
+        <form action="/register/submit" method="post">
+          <div class="stack">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" autocomplete="username" placeholder="your.username" />
+          </div>
+          <div class="stack">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" autocomplete="new-password" placeholder="Create a password" />
+          </div>
+          <div class="form-actions">
+            <button class="button primary" type="submit">Create account</button>
+            <a class="helper" href="/login">Already have an account? Log in</a>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer>Built to keep study spaces calm and comfortable.</footer>
 </body>
+</html>
